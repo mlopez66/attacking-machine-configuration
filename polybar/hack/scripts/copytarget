@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+ip_address=$(/bin/cat /home/looping/.target/target)
+
+if [ $ip_address ]; then
+	/bin/cat /home/looping/.target/target | tr -d '\n' | /usr/bin/xclip -sel clip
+fi

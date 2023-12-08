@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+ip_address=$(/bin/cat /home/looping/.target/target)
+
+if [ $ip_address ]; then
+	echo "%{F#e51d0b}󰯐 %{F#ffffff}$ip_address%{u-}"
+else
+	echo "%{F#404040}󰽅  No target%{u-}"
+fi
