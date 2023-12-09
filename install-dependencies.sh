@@ -16,7 +16,7 @@ echo "[*] Installing apt packages..."
 
 cd $INSTALL_FOLDER
 
-sudo apt install -y build-essential cmake cmake-data git libasound2-dev libcairo2-dev libconfig-dev libdbus-1-dev libev-dev libevdev-dev libgl1-mesa-dev libjsoncpp-dev libmpdclient-dev libnl-genl-3-dev libpcre2-dev libpixman-1-dev libpulse-dev libuv1-dev libx11-xcb-dev libxcb1-dev libxcb-composite0-dev libxcb-cursor-dev libxcb-damage0-dev libxcb-ewmh-dev libxcb-glx0-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-keysyms1-dev libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev libxcb-render-util0-dev libxcb-shape0-dev libxcb-util0-dev libxcb-xfixes0-dev libxcb-xinerama0-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-xtest0-dev libxext-dev libxinerama1 libxinerama-dev meson pkg-config python3-sphinx python3-xcbgen uthash-dev vim xcb-proto rofi feh imagemagick scrub neofetch flameshot ranger
+sudo apt install -y build-essential cmake cmake-data git libasound2-dev libcairo2-dev libconfig-dev libdbus-1-dev libev-dev libevdev-dev libgl1-mesa-dev libjsoncpp-dev libmpdclient-dev libnl-genl-3-dev libpcre2-dev libpixman-1-dev libpulse-dev libuv1-dev libx11-xcb-dev libxcb1-dev libxcb-composite0-dev libxcb-cursor-dev libxcb-damage0-dev libxcb-ewmh-dev libxcb-glx0-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-keysyms1-dev libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev libxcb-render-util0-dev libxcb-shape0-dev libxcb-util0-dev libxcb-xfixes0-dev libxcb-xinerama0-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-xtest0-dev libxext-dev libxinerama1 libxinerama-dev meson pkg-config python3-sphinx python3-xcbgen uthash-dev vim xcb-proto rofi feh imagemagick scrub neofetch flameshot ranger curl gpg gnupg2 software-properties-common apt-transport-https
 
 echo "[*] Installing bspwm and sxhkd..."
 
@@ -125,3 +125,18 @@ echo "[*] Installing Seclists"
 cd /opt 
 sudo git clone https://github.com/danielmiessler/SecLists.git
 sudo ln -s /opt/SecLists /usr/share/wordlists/
+
+echo "[*] Installing vscode"
+
+cd $INSTALL_FOLDER
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+sudo apt update && sudo apt install code
+
+echo "[*] Installing obsidian"
+
+cd $INSTALL_FOLDER
+wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.4.16/obsidian_1.4.16_amd64.deb
+sudo dpkg -i obsidian_1.4.16_amd64.deb
+
